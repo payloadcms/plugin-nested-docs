@@ -1,3 +1,4 @@
+import type { Config } from 'payload/config'
 import type { CollectionConfig } from 'payload/types'
 
 import type { PluginConfig } from '../types'
@@ -6,6 +7,7 @@ import getParents from './getParents'
 
 const populateBreadcrumbs = async (
   req: any,
+  config: Config,
   pluginConfig: PluginConfig,
   collection: CollectionConfig,
   data: any,
@@ -13,7 +15,7 @@ const populateBreadcrumbs = async (
 ): Promise<any> => {
   const newData = data
   const breadcrumbDocs = [
-    ...(await getParents(req, pluginConfig, collection, {
+    ...(await getParents(req, config, pluginConfig, collection, {
       ...originalDoc,
       ...data,
     })),

@@ -1,7 +1,9 @@
 import type { RelationshipField } from 'payload/dist/fields/config/types'
 
 const createParentField = (
-  relationTo: string,
+  // Pass a single collection or an array of collections
+  // If no createParentField found in collectionConfig, the default collection is used
+  relationTo: string | string[],
   overrides?: Partial<
     RelationshipField & {
       hasMany: false

@@ -29,11 +29,11 @@ const nestedDocs =
             ...(collection.hooks || {}),
             beforeChange: [
               async ({ req, data, originalDoc }) =>
-                populateBreadcrumbs(req, pluginConfig, collection, data, originalDoc),
+                populateBreadcrumbs(req, config, pluginConfig, collection, data, originalDoc),
               ...(collection?.hooks?.beforeChange || []),
             ],
             afterChange: [
-              resaveChildren(pluginConfig, collection),
+              resaveChildren(config, pluginConfig, collection),
               resaveSelfAfterCreate(collection),
               ...(collection?.hooks?.afterChange || []),
             ],

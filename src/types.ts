@@ -2,6 +2,7 @@ export interface Breadcrumb {
   url?: string
   label: string
   doc: string
+  collection: string
 }
 
 export type GenerateURL = (

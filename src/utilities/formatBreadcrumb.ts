@@ -27,6 +27,9 @@ const formatBreadcrumb = (
     label,
     url,
     doc: lastDoc.id as string,
+    // Add collection field into breadcrumbs
+    // Useful to retrieve each document data later in front-end if more info needed
+    collection: (lastDoc.collection as string) || collection.slug,
   }
 }
 
