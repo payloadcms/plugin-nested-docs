@@ -5,10 +5,20 @@ import { buildConfig } from 'payload/config'
 import nestedPages from '../../src' // eslint-disable-line import/no-relative-packages
 import { Pages } from './collections/Pages'
 import { Users } from './collections/Users'
+import { slateEditor } from '@payloadcms/richtext-slate'
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { webpackBundler } from '@payloadcms/bundler-webpack'
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI,
+    },
+  }),
+  editor: slateEditor({}),
   admin: {
+    bundler: webpackBundler(),
     user: Users.slug,
     webpack: config => {
       const newConfig = {
